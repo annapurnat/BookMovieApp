@@ -18,6 +18,7 @@
 .bookshow-button {
     float: right;
     margin-right: 8px;
+     text-decoration: none;
 }
 
 @keyframes app-logo-spin {

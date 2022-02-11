@@ -45,7 +45,7 @@ class Details extends Component {
             }]
         }
     }
-
+//getting data for movie
     componentWillMount() {
         let that = this;
         let dataMovie = null;
@@ -66,7 +66,7 @@ class Details extends Component {
     artistClickHandler = (url) => {
         window.location = url;
     }
-
+//rating functionality
     starClickHandler = (id) => {
         let starIconList = [];
         for (let star of this.state.starIcons) {
@@ -83,6 +83,8 @@ class Details extends Component {
         this.setState({ starIcons: starIconList });
     }
 
+
+
     render() {
         let movie = this.state.movie;
         const opts = {
@@ -93,11 +95,12 @@ class Details extends Component {
             }
         }
         return (
+
             <div className="details">
                 <Header id={this.props.match.params.id} baseUrl={this.props.baseUrl} showBookShowButton="true" />
                 <div className="back">
                     <Typography>
-                        <Link to="/">  &#60; Back to Home</Link>
+                        <Link to="/"   style={{ textDecoration: 'none' }}>  &#60; Back to Home</Link>
                     </Typography>
                 </div>
                 <div className="flex-containerDetails">

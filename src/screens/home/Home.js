@@ -5,6 +5,10 @@ import { withStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
+import Checkbox from '@material-ui/core/Checkbox';
+import ListItemText from '@material-ui/core/ListItemText';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import FormControl from '@material-ui/core/FormControl';
@@ -13,30 +17,29 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import Checkbox from '@material-ui/core/Checkbox';
-import ListItemText from '@material-ui/core/ListItemText';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
     root: {
-        flexGrow: 1,
-        backgroundColor: theme.palette.background.paper
+        backgroundColor: theme.palette.background.paper,
+        flexGrow: 1
+        
     },
-    upcomingMoviesHeading: {
-        textAlign: 'center',
-        background: '#ff9999',
+    HeadingupcomingMovies: {
         padding: '8px',
+        textAlign: 'center',
+        background: '#ff9999',       
         fontSize: '1rem'
     },
     gridListUpcomingMovies: {
         flexWrap: 'nowrap',
-        transform: 'translateZ(0)',
-        width: '100%'
+        width: '100%',
+        transform: 'translateZ(0)'
+       
     },
     gridListMain: {
-        transform: 'translateZ(0)',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        transform: 'translateZ(0)'
+        
     },
     formControl: {
         margin: theme.spacing.unit,
@@ -52,6 +55,7 @@ class Home extends Component {
 
     constructor() {
         super();
+
         this.state = {
             movieName: "",
             upcomingMovies: [],
@@ -63,10 +67,11 @@ class Home extends Component {
             releaseDateStart: "",
             releaseDateEnd: ""
         }
+
     }
 
     componentWillMount() {
-        // Getting for upcoming movies 
+        // Getting  data for upcoming movies 
         let data = null;
         let xhr = new XMLHttpRequest();
         let that = this;
@@ -84,7 +89,7 @@ class Home extends Component {
         xhr.setRequestHeader("Cache-Control", "no-cache");
         xhr.send(data);
 
-        // Getting for released movies
+        // Getting  data for released movies
         let dataReleased = null;
         let xhrReleased = new XMLHttpRequest();
         xhrReleased.addEventListener("readystatechange", function () {
@@ -101,7 +106,7 @@ class Home extends Component {
 
 
 
-        // Getting filters
+        // Getting data filters
         let dataGenres = null;
         let xhrGenres = new XMLHttpRequest();
         xhrGenres.addEventListener("readystatechange", function () {
@@ -116,7 +121,7 @@ class Home extends Component {
         xhrGenres.setRequestHeader("Cache-Control", "no-cache");
         xhrGenres.send(dataGenres);
 
-        // Getting artists
+        // Getting data artists
         let dataArtists = null;
         let xhrArtists = new XMLHttpRequest();
         xhrArtists.addEventListener("readystatechange", function () {
@@ -155,7 +160,7 @@ class Home extends Component {
     movieClickHandler = (movieId) => {
         this.props.history.push('/movie/' + movieId);
     }
-
+        //applying filter
     filterApplyHandler = () => {
         let queryString = "?status=RELEASED";
         if (this.state.movieName !== "") {
@@ -196,7 +201,7 @@ class Home extends Component {
             <div>
                 <Header baseUrl={this.props.baseUrl} />
 
-                <div className={classes.upcomingMoviesHeading}>
+                <div className={classes.HeadingupcomingMovies}>
                     <span>Upcoming Movies</span>
                 </div>
 
